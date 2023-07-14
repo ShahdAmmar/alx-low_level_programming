@@ -2,12 +2,11 @@
 #include <time.h>
 #include <stdlib.h>
 
-/** 
+/**
  * main - entry point
  * Description: positive or negative
  * Return: always zero
  */
-
 int main(void)
 {
 	int n;
