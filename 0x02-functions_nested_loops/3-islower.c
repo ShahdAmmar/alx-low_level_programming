@@ -1,5 +1,6 @@
 /**
  * _islower - check lowercase
+ * c: printed char
  * Return: 1 or 0
  */
 
