@@ -1,5 +1,5 @@
 /**
- * *_strncat - concantenate n bytes 
+ * *_strncat - concantenate n bytes
  * @dest: where the strings should be concatenated
  * @src: source string
  * @n: No. bytes
