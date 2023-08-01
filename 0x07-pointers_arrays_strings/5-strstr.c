@@ -6,17 +6,18 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i = 0;
-	char *p;
-
-	while (haystack[i] != '\0')
+	for (; *haystack != '\0'; haystack++)
 	{
-		if (needle[0] == haystack[i])
+		char *one = haystack;
+		char *two = needle;
+		
+		while (*one == *two && *two != '\0')
 		{
-			p = &haystack[i];
-			return (p);
+			one++;
+			two++;
 		}
-		i++;
+		if (*two == '\0')
+			return (haystack);
 	}
 	return (0);
 }
