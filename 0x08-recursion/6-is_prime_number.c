@@ -1,6 +1,7 @@
 /**
  * is_prime_number - determine if n is prime or not
  * @n: integer
+ * @othern: helping num
  * Return: 1 or 0
  */
 int check_if_prime(int n, int othern);
@@ -19,7 +20,7 @@ int check_if_prime(int n, int othern)
 {
 	if (othern >= n && n > 1)
 		return (1);
-	else if (n % othern == 0 || n <=1)
+	else if (n % othern == 0 || n <= 1)
 		return (0);
 	else
 		return (check_if_prime(n, othern + 1));
