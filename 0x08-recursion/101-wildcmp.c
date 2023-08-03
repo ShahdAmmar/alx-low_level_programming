@@ -31,7 +31,7 @@ int inception(char *s1, char *s2)
 /**
  * wildcmp - compare
  * @s1: 1st string
- * @s2: 2nd string 
+ * @s2: 2nd string
  * Return: 1 or 0
  */
 int wildcmp(char *s1, char *s2)
