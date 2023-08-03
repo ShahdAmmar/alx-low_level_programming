@@ -1,6 +1,7 @@
 /**
  * move_past_star - return string s2 without stars
- * @s2: strinf
+ * @s2: 2nd string
+ * @s1: 1st string
  * Return: s2 without *
  */
 int wildcmp(char *s1, char *s2);
