@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	{
 		if (*argv[i] >= 48 && *argv[i] <= 57)
 		{
-			if (atoi(argv[i]) > 0)
+			if (atoi(argv[i]) >= 0)
 				sum += atoi(argv[i]);
 		}
 		else
