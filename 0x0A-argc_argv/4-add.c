@@ -1,5 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+/**
+ * check_num - check string
+ * @str: array str
+ * Return: 0
+ */
+int check_num(char *str)
+{
+	unsigned int count;
+	count = 0;
+	while (count < strlen(str))
+	{
+		if (!isdigit(str[count]))
+		{
+			return (0);
+		}
+		count++;
+	}
+	return (1);
+}
 /**
  * main - add positive numbers
  * @argc: count
@@ -12,7 +33,7 @@ int main(int argc, char **argv)
 
 	for (i = 1; i < argc; i++)
 	{
-		if (*argv[i] >= 48 && *argv[i] <= 57)
+		if (check_num(argv[i]))
 		{
 			if (atoi(argv[i]) >= 0)
 				sum += atoi(argv[i]);
