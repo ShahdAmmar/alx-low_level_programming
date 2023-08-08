@@ -25,7 +25,7 @@ int _strlen(char *s)
 char *_strdup(char *str)
 {
 	int len = _strlen(str);
-	char *copy = malloc(len);
+	char *copy = malloc(len + 1);
 	int i;
 
 	if (len == 0 || copy == 0)
