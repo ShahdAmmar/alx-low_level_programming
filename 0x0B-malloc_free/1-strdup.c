@@ -24,14 +24,14 @@ int _strlen(char *s)
  */
 char *_strdup(char *str)
 {
-	int len = _strlen(str) + 1;
+	int len = _strlen(str);
 	char *copy = malloc(len);
 	int i;
 
 	if (len == 0 || copy == 0)
 		return (NULL);
 
-	for (i = 0; i < len; i++)
+	for (i = 0; i < len + 1; i++)
 		copy[i] = str[i];
 	return (copy);
 }
