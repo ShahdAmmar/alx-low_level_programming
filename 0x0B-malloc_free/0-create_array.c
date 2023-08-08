@@ -7,11 +7,11 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char *ar;
+	char *ar = malloc(sizeof(char) * size);
 
-	if (size == 0)
+	if (size == 0 || ar == 0)
 		return (NULL);
-	ar = malloc(sizeof(char) * size);
-	ar[0] = c;
+	while (size--)
+		ar[size] = c;
 	return (ar);
 }
