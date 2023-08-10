@@ -18,7 +18,7 @@ int _strlen(char *s)
 }
 
 /**
- * string_nconcat: concatenate 2 strings
+ * string_nconcat - concatenate 2 strings
  * @s1: 1st string
  * @s2: 2nd string
  * @n: No. bytes
