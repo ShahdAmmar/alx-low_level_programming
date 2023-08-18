@@ -40,7 +40,8 @@ void format_float(char *separator, va_list ap)
 void format_string(char *separator, va_list ap)
 {
 	char *str = va_arg(ap, char *);
-	switch((int)(!str))
+
+	switch ((int)(!str))
 	case 1:
 		str = "(nil)";
 	printf("%s%s", separator, str);
@@ -48,7 +49,7 @@ void format_string(char *separator, va_list ap)
 
 /**
  * print_all - print all types of imputs
- * @format - type
+ * @format: type
  * Return: void
  */
 void print_all(const char * const format, ...)
