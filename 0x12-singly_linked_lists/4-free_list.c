@@ -3,7 +3,6 @@
 /**
  * free_list - free list_t
  * @head: ptr to head node
- * 
  * Return: void
  */
 void free_list(list_t *head)
