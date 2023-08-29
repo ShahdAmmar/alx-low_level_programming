@@ -10,6 +10,8 @@ void free_listint2(listint_t **head)
 {
 	listint_t *nxt_nd;
 
+	if (head == NULL || *head == NULL)
+		return;
 	while (*head)
 	{
 		nxt_nd = (*head)->next;
