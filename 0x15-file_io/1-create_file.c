@@ -17,10 +17,10 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-	if (file == -1)
-		return (-1);
 	if (length)
 		bytes = write(file, text_content, length);
+	if (file == -1 || bytes == -1)
+		return (-1);
 	close(file);
 
 	if (bytes == length)
