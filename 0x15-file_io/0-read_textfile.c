@@ -19,8 +19,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fildes = open(filename, 'r');
 	if (fildes == -1)
 		return (0);
-	bytes = read(fildes, &buffer[0], letters);
-	bytes = write(1, &buffer[0], bytes);
+	bytes = read(fildes, &buffer, letters);
+	bytes = write(1, &buffer, bytes);
+	if (!bytes)
+		return (0);
 	close(fildes);
 
 	return (bytes);
