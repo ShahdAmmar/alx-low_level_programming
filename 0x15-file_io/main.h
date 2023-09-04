@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 
 #define READ_BUFS 1024
 
