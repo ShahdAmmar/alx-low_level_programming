@@ -8,7 +8,7 @@
  */
 char *cr_buff(char *file)
 {
-	char *buff = malloc(sizeof(char) * BUFFER_SIZE);
+	char *buff = malloc(sizeof(char) * 1024);
 
 	if (!buff)
 	{
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	buff = cr_buff(argv[2]);
 
 	fil_from = open(argv[1], O_RDONLY);
-	r_data = read(fil_from, buff, BUFFER_SIZE);
+	r_data = read(fil_from, buff, 1024);
 	fil_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	do {
 		if (fil_from == -1 || r_data == -1)
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 			free(buff);
 			exit(99);
 		}
-		r_data = read(fil_from, buff, BUFFER_SIZE);
+		r_data = read(fil_from, buff, 1024);
 		fil_to = open(argv[2], O_WRONLY | O_APPEND);
 	} while (r_data > 0);
 
