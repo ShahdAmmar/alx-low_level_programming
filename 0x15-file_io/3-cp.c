@@ -8,30 +8,11 @@
  */
 char *cr_buff(char *file)
 {
-	char *buff = malloc(sizeof(char) * 1024);
+	char *buff = malloc(sizeof(char) * BUFFER_SIZE);
 
 	if (!buff)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
-		exit(99);
-	}
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file), exit(99);
 	return (buff);
-}
-
-/**
- * close_f - close fd
- * @fildes: fildes shoulf be closed
- * Return: void
- */
-void close_f(int fildes)
-{
-	int closing = close(fildes);
-
-	if (closing == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fildes);
-		exit(100);
-	}
 }
 
 /**
@@ -43,18 +24,14 @@ void close_f(int fildes)
 int main(int argc, char **argv)
 {
 	char *buff;
-	int fil_from, fil_to, r_data, w_data;
+	int fil_from, fil_to, r_data, w_data, from_closing, to_closing;
 
 	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to \n");
-		exit(97);
-	}
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to \n"), exit(97);
 
 	buff = cr_buff(argv[2]);
-
 	fil_from = open(argv[1], O_RDONLY);
-	r_data = read(fil_from, buff, 1024);
+	r_data = read(fil_from, buff, BUFFER_SIZE);
 	fil_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	do {
 		if (fil_from == -1 || r_data == -1)
@@ -70,12 +47,15 @@ int main(int argc, char **argv)
 			free(buff);
 			exit(99);
 		}
-		r_data = read(fil_from, buff, 1024);
+		r_data = read(fil_from, buff, BUFFER_SIZE);
 		fil_to = open(argv[2], O_WRONLY | O_APPEND);
 	} while (r_data > 0);
-
 	free(buff);
-	close_f(fil_from);
-	close_f(fil_to);
+	from_closing = close(fil_from);
+	if (from_closing == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fil_from), exit(100);
+	to_closing = close(fil_to);
+	if (to_closing == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fil_to), exit(100);
 	return (0);
 }
