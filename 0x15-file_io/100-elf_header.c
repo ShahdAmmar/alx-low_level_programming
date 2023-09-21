@@ -122,13 +122,13 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 		case ELFOSABI_OPENBSD:
 			printf("UNIX - BSD\n");
 			break;
-/*		case ELFOSABI_OPENVMS:
+		case ELFOSABI_OPENVMS:
 			printf("UNIX - VMS\n");
 			break;
 		case ELFOSABI_NSK:
 			printf("UNIX - NSK\n");
 			break;
-*/		default:
+		default:
 			printf("<unknown: %x>\n", elf_h.e_ident[EI_OSABI]);
 			break;
 	}
