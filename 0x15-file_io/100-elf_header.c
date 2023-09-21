@@ -53,6 +53,11 @@ void prtData(Elf64_Ehdr elf_h)
 	}
 }
 
+/**
+ * _prtOsAbi - printing part of OS/ABI to avoid betty error
+ * @elf_h: ELF_header structure
+ * Return: void
+ */
 void _prtOsAbi(Elf64_Ehdr elf_h)
 {
 	switch (elf_h.e_ident[EI_OSABI])
@@ -112,10 +117,8 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 		case 12:
 			printf("UNIX - BSD\n");
 			break;
-		default:
-			_prtOsAbi(elf_h);
-			break;
 	}
+	_prtOsAbi(elf_h);
 }
 
 /**
