@@ -53,6 +53,22 @@ void prtData(Elf64_Ehdr elf_h)
 	}
 }
 
+void _prtOsAbi(Elf64_Ehdr elf_h)
+{
+	switch (elf_h.e_ident[EI_OSABI])
+	{
+		case 13:
+			printf("UNIX - VMS\n");
+			break;
+		case 14:
+			printf("UNIX - NSK\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", elf_h.e_ident[EI_OSABI]);
+			break;
+	}
+}
+
 /**
  * prtOsAbi - printing OS/ABI
  * @elf_h: ELF_header structure
@@ -96,14 +112,8 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 		case 12:
 			printf("UNIX - BSD\n");
 			break;
-		case 13:
-			printf("UNIX - VMS\n");
-			break;
-		case 14:
-                        printf("UNIX - NSK\n");
-                        break;
 		default:
-			printf("<unknown: %x>\n", elf_h.e_ident[EI_OSABI]);
+			_prtOsAbi(elf_h);
 			break;
 	}
 }
@@ -118,13 +128,13 @@ void prtClass(Elf64_Ehdr elf_h)
 	printf("  Class:                             ");
 	switch (elf_h.e_ident[EI_CLASS])
 	{
-		case ELFCLASSNONE:
+		case 0:
 			printf("NONE\n");
 			break;
-		case ELFCLASS32:
+		case 1:
 			printf("ELF32\n");
 			break;
-		case ELFCLASS64:
+		case 2:
 			printf("ELF64\n");
 			break;
 	}
@@ -159,19 +169,19 @@ void prtType(Elf64_Ehdr elf_h)
 		i = 1;
 	switch (tp[i])
 	{
-		case ET_NONE:
+		case 0:
 			printf("NONE (No file type)\n");
 			break;
-		case ET_REL:
+		case 1:
 			printf("REL (Relocatable file)\n");
 			break;
-		case ET_EXEC:
+		case 2:
 			printf("EXEC (Executable file)\n");
 			break;
-		case ET_DYN:
+		case 3:
 			printf("DYN (Shared object file)\n");
 			break;
-		case ET_CORE:
+		case 4:
 			printf("CORE (Core file)\n");
 			break;
 		default:
