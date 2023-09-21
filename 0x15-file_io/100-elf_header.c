@@ -63,39 +63,45 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 	printf("  OS/ABI:                            ");
 	switch (elf_h.e_ident[EI_OSABI])
 	{
-		case ELFOSABI_NONE:
+		case 0:
 			printf("UNIX - System V\n");
 			break;
-		case ELFOSABI_HPUX:
+		case 1:
 			printf("UNIX - HP-UX\n");
 			break;
-		case ELFOSABI_NETBSD:
+		case 2:
 			printf("UNIX - NetBSD\n");
 			break;
-		case ELFOSABI_LINUX:
+		case 3:
 			printf("UNIX - Linux\n");
 			break;
-		case ELFOSABI_SOLARIS:
+		case 6:
 			printf("UNIX - Solaris\n");
 			break;
-		case ELFOSABI_AIX:
+		case 7:
 			printf("UNIX - AIX\n");
 			break;
-		case ELFOSABI_IRIX:
+		case 8:
 			printf("UNIX - IRIX\n");
 			break;
-		case ELFOSABI_FREEBSD:
+		case 9:
 			printf("UNIX - FreeBSD\n");
 			break;
-		case ELFOSABI_TRU64:
+		case 10:
 			printf("UNIX - TRU64\n");
 			break;
-		case ELFOSABI_MODESTO:
+		case 11:
 			printf("UNIX - Modesto\n");
 			break;
-		case ELFOSABI_OPENBSD:
+		case 12:
 			printf("UNIX - BSD\n");
 			break;
+		case 13:
+			printf("UNIX - VMS\n");
+			break;
+		case 14:
+                        printf("UNIX - NSK\n");
+                        break;
 		default:
 			printf("<unknown: %x>\n", elf_h.e_ident[EI_OSABI]);
 			break;
