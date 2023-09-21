@@ -117,8 +117,10 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 		case 12:
 			printf("UNIX - BSD\n");
 			break;
+		default:
+			_prtOsAbi(elf_h);
+			break;
 	}
-	_prtOsAbi(elf_h);
 }
 
 /**
