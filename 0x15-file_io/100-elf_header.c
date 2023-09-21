@@ -184,7 +184,7 @@ void prtEntry(Elf64_Ehdr elf_h)
 	int j = 0, l = 0;
 	unsigned char *en = (unsigned char *)&elf_h.e_entry;
 
-	printf("  Entry point address:               ");
+	printf("  Entry point address:               0x");
 	if (elf_h.e_ident[EI_DATA] == ELFDATA2MSB)
 	{
 		j = 0;
