@@ -41,13 +41,13 @@ void prtData(Elf64_Ehdr elf_h)
 	printf("  Data:                              ");
 	switch (elf_h.e_ident[EI_DATA])
 	{
-		case ELFDATANONE:
+		case 0:
 			printf("NONE\n");
 			break;
-		case ELFDATA2LSB:
+		case 1:
 			printf("2's complement, little endian\n");
 			break;
-		case ELFDATA2MSB:
+		case 2:
 			printf("2's complement, big endian\n");
 			break;
 	}
