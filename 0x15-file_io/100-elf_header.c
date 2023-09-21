@@ -122,12 +122,12 @@ void prtOsAbi(Elf64_Ehdr elf_h)
 		case ELFOSABI_OPENBSD:
 			printf("UNIX - BSD\n");
 			break;
-		case ELFOSABI_OPENVMS:
+/*		case ELFOSABI_OPENVMS:
 			printf("UNIX - VMS\n");
 			break;
 		case ELFOSABI_NSK:
 			printf("UNIX - NSK\n");
-			break;
+			break;*/
 		default:
 			printf("<unknown: %x>\n", elf_h.e_ident[EI_OSABI]);
 			break;
@@ -178,6 +178,49 @@ void prtType(Elf64_Ehdr elf_h)
 			printf("<unkown>: %x", tp[i]);
 			break;
 	}
+}
+
+/**
+ * prtEntry - printing entry address
+ * @elf_h: ELF_header structure
+ * Return: void
+ */
+void prtEntry(Elf64_Ehdr elf_h)
+{
+	int j = 0, l = 0;
+	unsigned char *en = (unsigned char *)&elf_h.e_entry;
+
+	printf("  Entry point address:               ");
+	if (elf_h.e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		j = 0;
+		if (elf_h.e_ident[EI_CLASS] == ELFCLASS64)
+			l = 7;
+		else
+			l = 3;
+		while(!en[j])
+			j++;
+		printf("%x", en[j]);
+		j++;
+		for (; j <= l; j++)
+			printf("%02x", en[j]);
+		printf("\n");
+	}
+	else
+	{
+		if (elf_h.e_ident[EI_CLASS] == ELFCLASS64)
+                        j = 7;
+                else
+                        j = 3;
+		while (!en[j])
+			j--;
+		printf("%x", en[j]);
+		j--;
+		for(; j >= 0; j--)
+			printf("%02x", en[j]);
+		printf("\n");
+	}
+  		
 }
 
 /**
