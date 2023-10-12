@@ -12,7 +12,8 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 
 	if (!head || !n)
 	{
-		free(new_nd);
+		if (new_nd)
+			free(new_nd);
 		return (NULL);
 	}
 
