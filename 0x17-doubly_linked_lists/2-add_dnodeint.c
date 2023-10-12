@@ -12,9 +12,11 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 
 	if (!head || !n)
 	{
+		/*
 		if (new_nd)
 			free(new_nd);
-		return (NULL);
+			*/
+		return (new_nd ? free(new_nd), NULL : NULL);
 	}
 
 	new_nd->n = n;
