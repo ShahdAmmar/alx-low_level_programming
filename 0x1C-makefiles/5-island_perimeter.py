@@ -4,7 +4,7 @@
 
 def island_perimeter(grid):
     """
-    Returns perimeter of an island from data in the gird 
+    Returns perimeter of an island from data in the gird
     """
     ht = len(grid)
     wd = len(grid[0])
